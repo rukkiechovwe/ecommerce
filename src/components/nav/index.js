@@ -7,8 +7,8 @@ const Nav = ({ cartTotal }) => {
         <S.Ul>
           <S.Logo to="/">Logo</S.Logo>
           <S.NavContainer>
-            <S.NavLink to="/">LOGIN</S.NavLink>
-            <S.NavLink to="/">SIGNUP</S.NavLink>
+            <S.NavLink to="/login">LOGIN</S.NavLink>
+            <S.NavLink to="/signup">SIGNUP</S.NavLink>
             <S.NavLink to="/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
