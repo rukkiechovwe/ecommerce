@@ -4,11 +4,12 @@ export const Container= styled.div`
 	width: 100%;
 `;
 export const Input= styled.input`
-	padding: 10px;
+	padding: .5rem;
 	width: 100%;
 	background: #fff;
-	border: 1px solid #000;
+    border: 1px solid #000;
+    margin: .5rem 0;
 `;
 export const Label= styled.label`
-	padding: 10px 0;
+	padding: .5rem 0;
 `;

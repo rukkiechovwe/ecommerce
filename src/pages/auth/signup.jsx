@@ -7,14 +7,15 @@ import * as S from "./styles";
 
 const Signup = () => {
 	const [email, setEmail] = useState("");
+	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
 
-	const signUpUser = (e, p) => {
+	const signUpUser = (e, p, n) => {
 		auth
 			.createUserWithEmailAndPassword(e, p)
 			.then(async (uc) => {
 				await firestore.collection("users").doc(uc.user.uid).set({
-					name: "",
+					name: n,
 					email: e,
 				});
 			})
@@ -26,6 +27,14 @@ const Signup = () => {
 	return (
 		<S.Container>
 			<S.AuthForm>
+				<InputField
+					title="Name"
+					type="text"
+					placeholder="john doe"
+					onChange={(e) => {
+						setUserName(e.target.value);
+					}}
+				/>
 				<InputField
 					title="Email"
 					type="email"
@@ -45,10 +54,10 @@ const Signup = () => {
 				<Button
 					onClick={(e) => {
 						e.preventDefault();
-						signUpUser(email, password);
+						signUpUser(email, password, userName);
 					}}
 				>
-					Login
+					Signup
 				</Button>
 			</S.AuthForm>
 		</S.Container>
