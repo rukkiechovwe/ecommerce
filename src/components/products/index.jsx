@@ -11,7 +11,7 @@ const Products = () => {
     <ProductCard
       title={item.title}
       price={item.price}
-      avatar={item.image}
+      image={item.image}
       key={item.id}
       onClick={() => {
         // console.log(item);

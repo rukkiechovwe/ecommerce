@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import * as S from "./styles";
 import Button from "../../common/button";
-import ProductImage from "../../common/avatar";
+import ProductImage from "../../common/appImages";
 import Nav from "../../components/nav";
 import { CartContext } from "../../context/cartContext";
 

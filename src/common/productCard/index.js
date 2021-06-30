@@ -1,10 +1,10 @@
-import ProductImage from "../avatar";
+import ProductImage from "../appImages";
 import * as S from "./styles";
 
-const ProductCard = ({ onClick, title, price, avatar }) => (
+const ProductCard = ({ onClick, title, price, image }) => (
   <S.ProductCard onClick={onClick}>
     <S.ImageDiv height="150px" width="100%">
-      <ProductImage src={avatar} />
+      <ProductImage src={image} />
     </S.ImageDiv>
     <S.Name>{title}Solar Panels</S.Name>
     <S.Price>${price}</S.Price>

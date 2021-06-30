@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProductImage from "../avatar";
+import ProductImage from "../appImages";
 import * as S from "./styles";
 
 const CartCard = ({ productData}) => {
