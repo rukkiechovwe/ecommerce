@@ -15,9 +15,10 @@ function AppRouter() {
         <Route path="/cart" component={CartPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/profile" component={UserProfile} />
         <Route path="/reset_password" component={ResetPassword} />
+
         <Route path="/:title" component={ProductDetails} />
+        <Route path="/" component={UserProfile} />
       </Switch>
     </Router>
   );
