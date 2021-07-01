@@ -13,7 +13,17 @@ const Signup = () => {
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
 
-	const signUpUser = (e, p, n) => {
+	const signUpUser = async (e, p, n) => {
+		// const x = new Promise((resolve, reject) => {
+		// 	setTimeout(() => {
+		// 		resolve("");
+		// 		console.log("Successful"); // 2
+		// 	}, 3000);
+		// });
+		// x.then((value) => {
+		// 	console.log("Promise succesfull"); // 3
+		// });
+		// console.log("After [Successful] from x"); // 1
 		auth
 			.createUserWithEmailAndPassword(e, p)
 			.then(async (uc) => {

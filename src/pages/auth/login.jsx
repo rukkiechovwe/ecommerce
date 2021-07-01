@@ -18,7 +18,7 @@ const Login = () => {
       .signInWithEmailAndPassword(e, p)
       .then((userCredential) => {
         console.log("you are signed in", userCredential.user.email);
-        history.push(`/${e}`, { user: e });
+        history.push(`/account/${e}`, { user: e });
       })
       .catch((error) => {
         console.log("Error message: ", error.message);
