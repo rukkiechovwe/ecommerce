@@ -8,17 +8,16 @@ const UserProfile = () => {
 	const history = useHistory();
 	const [userData, setUserData] = useState([]);
 
-	const docRef = firestore.collection("users").doc("uid");
-
 	useEffect(() => {
-		docRef
+		firestore
+			.collection("users")
+			.doc("id")
 			.get()
 			.then((doc) => {
 				if (doc.exists) {
 					//  console.log("Document data:", doc.data());
 					setUserData(doc.data());
 				} else {
-					// doc.data() will be undefined in this case
 					console.log("No such document!");
 				}
 			})

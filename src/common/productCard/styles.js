@@ -30,14 +30,14 @@ export const ProductCard = styled.div`
       margin-left: 22%;
     }
   }
-  @media (min-width: 890px) {
+  @media (min-width: 860px) {
     width: 22.5%;
   }
   @media (min-width: 1020px) {
     width: 17.9%;
   }
   @media (min-width: 1400px) {
-    width: 16.5%;
+    width: 18%;
   }
 `;
 // export const ProductCard = styled.div`

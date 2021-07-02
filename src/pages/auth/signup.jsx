@@ -13,23 +13,14 @@ const Signup = () => {
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
 
-	const signUpUser = async (e, p, n) => {
-		// const x = new Promise((resolve, reject) => {
-		// 	setTimeout(() => {
-		// 		resolve("");
-		// 		console.log("Successful"); // 2
-		// 	}, 3000);
-		// });
-		// x.then((value) => {
-		// 	console.log("Promise succesfull"); // 3
-		// });
-		// console.log("After [Successful] from x"); // 1
+	const signUpUser = async (n, e, p) => {
 		auth
 			.createUserWithEmailAndPassword(e, p)
 			.then(async (uc) => {
 				await firestore.collection("users").doc(uc.user.uid).set({
 					name: n,
 					email: e,
+					id: uc.user.uid,
 				});
 			})
 			.catch((error) => {
@@ -51,6 +42,7 @@ const Signup = () => {
 				<S.AuthForm>
 					<InputField
 						title="Name"
+						name="name"
 						type="text"
 						placeholder="john doe"
 						onChange={(e) => {
@@ -76,7 +68,7 @@ const Signup = () => {
 					<Button
 						onClick={(e) => {
 							e.preventDefault();
-							signUpUser(email, password, userName);
+							signUpUser(userName, email, password);
 						}}
 					>
 						Signup
