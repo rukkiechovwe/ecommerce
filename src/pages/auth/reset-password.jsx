@@ -10,9 +10,11 @@ const ResetPassword = () => {
 				<InputField
 					title="Email"
 					type="email"
+               
 					placeholder="hello@gmail.com"
 					onChange={(e) => {
 						setEmail(e.target.value);
+                  console.log(email);
 					}}
 				/>
 			</S.AuthForm>

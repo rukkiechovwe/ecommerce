@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useHistory } from "react-router";
-import Button from "../../common/button";
-import { firestore, auth } from "../../firebase";
+import { firestore, auth } from "../firebase";
 
-const UserProfile = () => {
-  const user = useLocation().state.user;
-  const history = useHistory();
+export const UserContext = React.createContext();
+
+function UserContextProvider({ children }) {
   const [userData, setUserData] = useState({});
-
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -32,13 +29,9 @@ const UserProfile = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Profile</h2>
-      <p>{user}</p>
-      <p>{userData.name}</p>
-      <Button onClick={() => history.goBack()}>Signout</Button>
-    </div>
+    <UserContext.Provider value={{ userData: userData }}>
+      {{ children }}
+    </UserContext.Provider>
   );
-};
-
-export default UserProfile;
+}
+export default UserContextProvider;

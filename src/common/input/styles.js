@@ -20,3 +20,6 @@ export const Input = styled.input`
 export const Label = styled.label`
 	padding: 0.5rem 0;
 `;
+export const ErrorText = styled.span`
+  color: #ff2424;
+`;

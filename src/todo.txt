@@ -1,0 +1,16 @@
+- Cart Page
+   + Checkout Button
+   + Subtotal
+   + Remove Item
+- Sign In With Google
+- Checkout Page
+   + Login Before Payment
+   + Payment with Paystack
+   + Add Delivery Address using Google Maps
+- User Dashboard
+   + View Orders
+   + View Delivery Address
+   + Transaction History
+   + Edit Progile
+   + Logout
+

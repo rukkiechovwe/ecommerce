@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import * as S from "./styles";
 import { auth } from "../../firebase";
+import { LoginValidation } from "./validate";
 
 import InputField from "../../common/input";
 import Button from "../../common/button";
@@ -11,6 +12,7 @@ import Onboarding1 from "../../assets/images/happy-shopping.svg";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
   const history = useHistory();
 
   const signInUser = (e, p) => {
@@ -44,6 +46,7 @@ const Login = () => {
             onChange={(e) => {
               setEmail(e.target.value);
             }}
+            error={errors.email}
           />
           <InputField
             title="Password"
@@ -52,15 +55,25 @@ const Login = () => {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
+            error={errors.password}
           />
           <Button
             onClick={(e) => {
               e.preventDefault();
-              signInUser(email, password);
+              let errors = LoginValidation(email, password);
+              if (Object.keys(errors).length === 0) {
+                signInUser(email, password);
+              } else {
+                setErrors(errors);
+              }
             }}
           >
             Login
           </Button>
+          <S.Login>
+            Don't have an account?
+            <S.NavLink to="/signup"> Signup here</S.NavLink>
+          </S.Login>
         </S.AuthForm>
       </S.FormContainer>
     </S.Container>
