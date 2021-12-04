@@ -106,6 +106,14 @@ const Styles = createGlobalStyle`
     .icons{
         width:1.5rem;
     }
+    .no_cart{
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     
 `;
 

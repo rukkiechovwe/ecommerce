@@ -3,10 +3,11 @@ export const Button = styled.button`
 	font-weight: 600;
 	margin: 1rem 0;
 	padding: 10px;
-	width: 100%;
+	width: ${(props) => props.width || "100%"};
+	border:none;
 	background: ${(props) =>
-		props.color ||
-		`hsla(184, 50%, 45%, 1);
+    props.color ||
+    `hsla(184, 50%, 45%, 1);
 	background: linear-gradient(
 		225deg,
 		hsla(184, 50%, 45%, 1) 0%,

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import * as S from "./styles";
-import { auth } from "../../firebase";
+import { auth, gProvider } from "../../firebase";
 import { LoginValidation } from "./validate";
 
 import InputField from "../../common/input";
@@ -26,7 +26,17 @@ const Login = () => {
         console.log("Error message: ", error.message);
       });
   };
-
+  const signInWithGoogle = () => {
+    auth
+      .signInWithPopup(gProvider)
+      .then((result) => {
+        // console.log(result);
+        history.push(`/account/${result.user.email}`, { user: result.user.email });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <S.Container>
       <S.Onboarding>
@@ -69,6 +79,15 @@ const Login = () => {
             }}
           >
             Login
+          </Button>
+          <S.Login>OR</S.Login>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              signInWithGoogle();
+            }}
+          >
+            Signin with goolge
           </Button>
           <S.Login>
             Don't have an account?

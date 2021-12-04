@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth, firestore } from "../../firebase";
+import { auth, firestore, gProvider } from "../../firebase";
 import { useHistory } from "react-router";
 import { SignupValidation } from "./validate";
 
@@ -30,6 +30,24 @@ const Signup = () => {
       })
       .catch((error) => {
         console.log("sinup error:", error.message);
+      });
+  };
+
+  const signupWithGoogle = () => {
+    auth
+      .signInWithPopup(gProvider)
+      .then(async (result) => {
+        console.log(result);
+        await firestore.collection("users").doc(result.user.uid).set({
+          name: result.user.displayName,
+          email: result.user.email,
+          id: result.user.uid,
+        });
+        history.push(`/account/${result.user.email}`, { user: result.user.email });
+      })
+      
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -82,13 +100,22 @@ const Signup = () => {
               e.preventDefault();
               let errors = SignupValidation(userName, email, password);
               if (Object.keys(errors).length === 0) {
-                signUpUser(userName,email, password);
+                signUpUser(userName, email, password);
               } else {
                 setErrors(errors);
               }
             }}
           >
             Signup
+          </Button>
+          <S.Login>OR</S.Login>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              signupWithGoogle();
+            }}
+          >
+            Sign Up with Google
           </Button>
           <S.Login>
             Already have an account?

@@ -3,18 +3,16 @@ import styled from "styled-components";
 export const CartCard = styled.div`
 	display: flex;
 	justify-content: space-between;
-	margin: 15px;
+	margin: 10px;
 	padding: 10px;
-	width: 70%;
-	height: 100px;
+	width: 100%;
+	min-height: 100px;
 	background: #fff;
 	border-radius: 8px;
 	box-shadow: 0px 2px 10px #5e5d5d2b;
 
 	@media only screen and (max-width: 460px) {
 		flex-direction: column;
-		height: auto;
-		width: 90%;
 	}
 `;
 export const Container = styled.div`
@@ -31,7 +29,7 @@ export const Details = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	height: 100%;
-	width: 55%;
+	width: 70%;
 `;
 
 export const Name = styled.p`

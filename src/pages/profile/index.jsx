@@ -7,6 +7,8 @@ const UserProfile = () => {
   const user = useLocation().state.user;
   const history = useHistory();
   const [userData, setUserData] = useState({});
+  // const userContext = useContext(UserContext)
+
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -30,13 +32,23 @@ const UserProfile = () => {
       }
     });
   }, []);
-
+  const signOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        console.log("signout successful");
+        history.push("/")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div>
       <h2>Profile</h2>
       <p>{user}</p>
       <p>{userData.name}</p>
-      <Button onClick={() => history.goBack()}>Signout</Button>
+      <Button onClick={() => signOut()}>Signout</Button>
     </div>
   );
 };
