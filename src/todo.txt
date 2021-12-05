@@ -1,16 +1,22 @@
+__TODO__
 - Cart Page
    + Checkout Button
    + Subtotal
-   + Remove Item
-- Sign In With Google
+   + Delete Item
+- Auth
+   + Manage auth state(store user data)
+   + Show user icon on nav bar when user is logged in
 - Checkout Page
    + Login Before Payment
    + Payment with Paystack
-   + Add Delivery Address using Google Maps
+   + Add Delivery Address
 - User Dashboard
    + View Orders
    + View Delivery Address
    + Transaction History
-   + Edit Progile
-   + Logout
+   + Edit Profile
 
+__COMPLETED__
+- Sign In With Google
+- User Dashboard
+   + Logout

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { firestore, auth } from "../firebase";
+import { useHistory } from "react-router-dom";
 
 export const UserContext = React.createContext();
 
 function UserContextProvider({ children }) {
   const [userData, setUserData] = useState({});
+  const history = useHistory();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -28,9 +30,20 @@ function UserContextProvider({ children }) {
     });
   }, []);
 
+  const signOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        console.log("signout successful");
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
-    <UserContext.Provider value={{ userData: userData }}>
-      {{ children }}
+    <UserContext.Provider value={{ userData: userData, signOut: signOut }}>
+      {children}
     </UserContext.Provider>
   );
 }

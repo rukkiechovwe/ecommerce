@@ -26,17 +26,18 @@ const Login = () => {
         console.log("Error message: ", error.message);
       });
   };
-  const signInWithGoogle = () => {
-    auth
-      .signInWithPopup(gProvider)
-      .then((result) => {
-        // console.log(result);
-        history.push(`/account/${result.user.email}`, { user: result.user.email });
-      })
-      .catch((error) => {
-        console.log(error);
+
+  const signInWithGoogle = async () => {
+    try {
+      const response = await auth.signInWithPopup(gProvider);
+      history.push(`/account/${response.user.email}`, {
+        user: response.user.email,
       });
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <S.Container>
       <S.Onboarding>
@@ -87,7 +88,7 @@ const Login = () => {
               signInWithGoogle();
             }}
           >
-            Signin with goolge
+            Signin with Google
           </Button>
           <S.Login>
             Don't have an account?

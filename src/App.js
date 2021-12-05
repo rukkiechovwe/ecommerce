@@ -1,16 +1,19 @@
 import GlobalStyles from "./globalStlyes";
-import ProductContextProvider from "./context/productContext"
+import ProductContextProvider from "./context/productContext";
+import UserContext from "./context/userContext";
 import CartContextProvider from "./context/cartContext";
 import AppRouter from "./router";
 
 function App() {
   return (
-    <ProductContextProvider>
+    <UserContext>
+      <ProductContextProvider>
         <CartContextProvider>
           <GlobalStyles />
           <AppRouter />
         </CartContextProvider>
-    </ProductContextProvider>
+      </ProductContextProvider>
+    </UserContext>
   );
 }
 
