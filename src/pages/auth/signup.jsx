@@ -26,7 +26,8 @@ const Signup = () => {
           email: e,
           id: uc.user.uid,
         });
-        history.push(`/account/${e}`, { user: e });
+        localStorage.setItem("user_id", uc.user.uid);
+        history.push(`/account`);
       })
       .catch((error) => {
         console.log("sinup error:", error.message);
@@ -43,9 +44,10 @@ const Signup = () => {
           email: result.user.email,
           id: result.user.uid,
         });
-        history.push(`/account/${result.user.email}`, { user: result.user.email });
+        localStorage.setItem("user_id", result.user.uid);
+        history.push(`/account`);
       })
-      
+
       .catch((error) => {
         console.log(error);
       });

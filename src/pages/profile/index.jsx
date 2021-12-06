@@ -1,20 +1,26 @@
 import React, { useContext } from "react";
-import { useLocation } from "react-router";
 import Button from "../../common/button";
 import { UserContext } from "../../context/userContext";
 
 const UserProfile = () => {
-  const user = useLocation().state.user;
-  const { userData, signOut } = useContext(UserContext);
+  const { userData, signOut, setUserState } = useContext(UserContext);
 
   return (
     <div>
       {userData && (
         <>
           <h2>Profile</h2>
-          <p>{user}</p>
+          <p>{userData.email}</p>
           <p>{userData.name}</p>
-          <Button onClick={() => signOut()}>Signout</Button>
+          <Button
+          width="300px"
+            onClick={() => {
+              signOut();
+              setUserState(false);
+            }}
+          >
+            Signout
+          </Button>
         </>
       )}
     </div>

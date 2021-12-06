@@ -15,7 +15,7 @@ function AppRouter() {
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <Route path="/reset_password" component={ResetPassword} />
-      <Route path="/account/:uid" component={UserProfile} />
+      <Route path="/account" component={UserProfile} />
       <Route path="/:title" component={ProductDetails} />
     </Switch>
   );

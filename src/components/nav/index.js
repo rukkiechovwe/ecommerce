@@ -1,14 +1,27 @@
+import { useContext } from "react";
+import { CartContext } from "../../context/cartContext";
+import { UserContext } from "../../context/userContext";
 import * as S from "./styles";
 
-const Nav = ({ cartTotal }) => {
+const Nav = () => {
+  const { userState } = useContext(UserContext);
+  const { cartTotal } = useContext(CartContext);
+
   return (
     <S.Header>
       <S.Container>
         <S.Ul>
           <S.Logo to="/">Logo</S.Logo>
           <S.NavContainer>
-            <S.NavLink to="/login">LOGIN</S.NavLink>
-            <S.NavLink to="/signup">SIGNUP</S.NavLink>
+            {userState ? (
+              <S.NavLink to="/account">PROFILE</S.NavLink>
+            ) : (
+              <>
+                <S.NavLink to="/login">LOGIN</S.NavLink>
+                <S.NavLink to="/signup">SIGNUP</S.NavLink>
+              </>
+            )}
+
             <S.NavLink to="/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +37,7 @@ const Nav = ({ cartTotal }) => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>{" "}
-              {cartTotal}
+              {cartTotal > 0 && cartTotal}
             </S.NavLink>
           </S.NavContainer>
         </S.Ul>

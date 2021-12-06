@@ -7,18 +7,26 @@ export const UserContext = React.createContext();
 function UserContextProvider({ children }) {
   const [userData, setUserData] = useState({});
   const history = useHistory();
+  const [userState, setUserState] = useState(false);
+
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         console.log(user.uid);
+        const user_id = localStorage.getItem("user_id");
+        if (user_id === null) {
+          localStorage.setItem("user_id", user.uid);
+        }
+        console.log(user_id);
         firestore
           .collection("users")
-          .doc(user.uid)
+          .doc(user_id)
           .get()
           .then((doc) => {
             if (doc.exists) {
               console.log("Document data:", doc.data());
               setUserData(doc.data());
+              setUserState(true);
             } else {
               console.log("No such document!");
             }
@@ -30,11 +38,22 @@ function UserContextProvider({ children }) {
     });
   }, []);
 
+  useEffect(() => {
+    const user_id = localStorage.getItem("user_id");
+    if (user_id) {
+      setUserState(true);
+    } else {
+      setUserState(false);
+    }
+    console.log(userState);
+  }, [setUserState, userState]);
+
   const signOut = () => {
     auth
       .signOut()
       .then(() => {
         console.log("signout successful");
+        localStorage.removeItem("user_id");
         history.push("/");
       })
       .catch((error) => {
@@ -42,7 +61,9 @@ function UserContextProvider({ children }) {
       });
   };
   return (
-    <UserContext.Provider value={{ userData: userData, signOut: signOut }}>
+    <UserContext.Provider
+      value={{ userData, signOut, userState, setUserState }}
+    >
       {children}
     </UserContext.Provider>
   );

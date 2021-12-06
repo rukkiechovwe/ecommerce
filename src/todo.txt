@@ -1,11 +1,8 @@
 __TODO__
 - Cart Page
-   + Checkout Button
    + Subtotal
    + Delete Item
-- Auth
-   + Manage auth state(store user data)
-   + Show user icon on nav bar when user is logged in
+   + Checkout Button
 - Checkout Page
    + Login Before Payment
    + Payment with Paystack
@@ -18,5 +15,8 @@ __TODO__
 
 __COMPLETED__
 - Sign In With Google
+- Auth
+   + Manage auth state(store user data)
+   + Show user icon on nav bar when user is logged in
 - User Dashboard
    + Logout

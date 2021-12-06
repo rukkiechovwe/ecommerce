@@ -20,7 +20,7 @@ const Login = () => {
       .signInWithEmailAndPassword(e, p)
       .then((userCredential) => {
         console.log("you are signed in", userCredential.user.email);
-        history.push(`/account/${e}`, { user: e });
+        history.push(`/account`);
       })
       .catch((error) => {
         console.log("Error message: ", error.message);
@@ -30,9 +30,8 @@ const Login = () => {
   const signInWithGoogle = async () => {
     try {
       const response = await auth.signInWithPopup(gProvider);
-      history.push(`/account/${response.user.email}`, {
-        user: response.user.email,
-      });
+      console.log(response);
+      history.push(`/account`);
     } catch (error) {
       console.log(error);
     }
