@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 30px 15px;
   width: 100%;
 `;
 export const Container = styled.div`
@@ -13,10 +13,10 @@ export const Container = styled.div`
   align-items: center;
   max-width: 100%;
   @media only screen and (min-width: 56px) {
-    max-width: 500px;
+    width: 500px;
   }
   @media only screen and (min-width: 768px) {
-    max-width: 900px;
+    width: 600px;
   }
 `;
 export const TotalText = styled.div`

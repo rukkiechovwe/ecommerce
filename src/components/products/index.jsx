@@ -5,20 +5,24 @@ import ProductCard from "../../common/productCard";
 import { ProductContext } from "../../context/productContext";
 
 const Products = () => {
-  const context = useContext(ProductContext);
+  const { item } = useContext(ProductContext);
   const history = useHistory();
-  return context.item.products.map((item) => (
-    <ProductCard
-      title={item.title}
-      price={item.price}
-      image={item.image}
-      key={item.id}
-      onClick={() => {
-        // console.log(item);
-        history.push(`/${item.title}`, { item: item });
-      }}
-    />
-  ));
+  return item.products.length === 0 ? (
+    <center>loading...</center>
+  ) : (
+    item.products.map((item) => (
+      <ProductCard
+        title={item.title}
+        price={item.price}
+        image={item.image}
+        key={item.id}
+        onClick={() => {
+          // console.log(item);
+          history.push(`/${item.title}`, { item: item });
+        }}
+      />
+    ))
+  );
 };
 
 export default Products;

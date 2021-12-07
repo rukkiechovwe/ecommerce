@@ -9,21 +9,21 @@ import Button from "../../common/button";
 
 function CartPage() {
   const history = useHistory();
-  const cartContext = useContext(CartContext);
-
+  const { cartItems, cartTotal, SubTotal } = useContext(CartContext);
+ 
   return (
     <>
       <Nav />
       <S.Wrapper>
-        {cartContext.cartTotal > 0 ? (
+        {cartTotal > 0 ? (
           <>
             <S.Container>
               <S.TotalText>
-                <p>{cartContext.cartTotal} Items</p>
-                <p>Total:</p>
+                <p>{cartTotal} Items</p>
+                <p>Total: {SubTotal}</p>
               </S.TotalText>
-              {cartContext.cartItems.map((product) => (
-                <CartCard productData={product} key={product.id} />
+              {cartItems.map((item) => (
+                <CartCard cartItem={item} key={item.id} />
               ))}
               <Button>Checkout</Button>
             </S.Container>
@@ -31,7 +31,9 @@ function CartPage() {
         ) : (
           <div className="no_cart">
             <p>No Item In Cart</p>
-            <Button width="300px" onClick={() => history.push("/")}>Continue Shopping</Button>
+            <Button width="300px" onClick={() => history.push("/")}>
+              Continue Shopping
+            </Button>
           </div>
         )}
       </S.Wrapper>

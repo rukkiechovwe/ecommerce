@@ -9,7 +9,7 @@ import { CartContext } from "../../context/cartContext";
 
 const ProductDetails = () => {
   const productData = useLocation().state.item;
-  const cartContext = useContext(CartContext);
+  const { cartItems, cartDispatch } = useContext(CartContext);
   const [product, setProduct] = useState(productData);
   return (
     <>
@@ -74,16 +74,18 @@ const ProductDetails = () => {
           <Button
             onClick={() => {
               let isInCart = false;
-              for (let i = 0; i < cartContext.cartItems.length; i++) {
-                const cart = cartContext.cartItems[i];
-                console.log(cart);
+             
+              for (let i = 0; i < cartItems.length; i++) {
+                const cart = cartItems[i];
+               //  console.log(cart);
+
                 if (product.title === cart.title) {
                   isInCart = true;
                   break;
                 }
               }
               if (!isInCart) {
-                cartContext.cartDispatch({
+                cartDispatch({
                   type: "add",
                   item: product,
                 });
@@ -91,6 +93,9 @@ const ProductDetails = () => {
               } else {
                 alert("Already in cart");
               }
+
+               // console.log(cartContext.cartItems);
+               // console.log(cartContext.cartItems.length);
             }}
           >
             ADD TO CART

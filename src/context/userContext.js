@@ -12,19 +12,19 @@ function UserContextProvider({ children }) {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user.uid);
+      //   console.log(user.uid);
         const user_id = localStorage.getItem("user_id");
         if (user_id === null) {
           localStorage.setItem("user_id", user.uid);
         }
-        console.log(user_id);
+      //   console.log(user_id);
         firestore
           .collection("users")
           .doc(user_id)
           .get()
           .then((doc) => {
             if (doc.exists) {
-              console.log("Document data:", doc.data());
+            //   console.log("Document data:", doc.data());
               setUserData(doc.data());
               setUserState(true);
             } else {
@@ -45,7 +45,7 @@ function UserContextProvider({ children }) {
     } else {
       setUserState(false);
     }
-    console.log(userState);
+   //  console.log(userState);
   }, [setUserState, userState]);
 
   const signOut = () => {

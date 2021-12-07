@@ -1,7 +1,5 @@
-__TODO__
+_____________TODO_____________
 - Cart Page
-   + Subtotal
-   + Delete Item
    + Checkout Button
 - Checkout Page
    + Login Before Payment
@@ -13,10 +11,14 @@ __TODO__
    + Transaction History
    + Edit Profile
 
-__COMPLETED__
-- Sign In With Google
+
+_____________COMPLETED_____________
 - Auth
    + Manage auth state(store user data)
    + Show user icon on nav bar when user is logged in
+- Cart Page
+   + Delete Item
+   + Subtotal
+- Sign In With Google
 - User Dashboard
    + Logout

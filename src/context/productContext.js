@@ -30,7 +30,10 @@ function ProductContextProvider({ children }) {
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
-      .then((data) => dispatch({ type: "transformProduct", payload: data }))
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: "transformProduct", payload: data });
+      })
       .catch((error) => console.log(error));
   }, []);
   return (
