@@ -17,8 +17,8 @@ const Nav = () => {
               <S.NavLink to="/account">PROFILE</S.NavLink>
             ) : (
               <>
-                <S.NavLink to="/login">LOGIN</S.NavLink>
-                <S.NavLink to="/signup">SIGNUP</S.NavLink>
+                <S.NavLink to="/sign-in">LOGIN</S.NavLink>
+                <S.NavLink to="/sign-up">SIGNUP</S.NavLink>
               </>
             )}
 

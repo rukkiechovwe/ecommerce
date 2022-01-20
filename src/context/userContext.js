@@ -12,7 +12,7 @@ function UserContextProvider({ children }) {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-      //   console.log(user.uid);
+        console.log(user.uid);
         const user_id = localStorage.getItem("user_id");
         if (user_id === null) {
           localStorage.setItem("user_id", user.uid);

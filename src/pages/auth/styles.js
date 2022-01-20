@@ -9,7 +9,7 @@ export const Container = styled.div`
   overflow: auto;
 `;
 export const FormContainer = styled.div`
-  width: 45%;
+  width: 35%;
   height: 100%;
   min-height: 100vh;
   display: flex;
@@ -23,18 +23,24 @@ export const FormContainer = styled.div`
   }
 `;
 
-export const LoginText = styled.h1`
+export const LoginText = styled.h3`
   text-align: center;
 `;
 export const AuthForm = styled.form`
   width: 100%;
   padding: 15px;
   height: 100%;
+  @media only screen and (min-width: 500px) {
+    width: 70%;
+  }
+  @media only screen and (min-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Onboarding = styled.div`
 		text-align: center;
-		width: 55%;
+		width: 65%;
 		height 100%;
 		min-height: 100vh;
 		display: flex;
@@ -79,6 +85,7 @@ export const Text = styled.p`
 `;
 export const Login = styled.p`
   text-align: center;
+  font-size: 13px;
 `;
 export const NavLink = styled(Link)`
   color: hsla(184, 50%, 45%, 1);

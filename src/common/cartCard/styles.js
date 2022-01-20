@@ -66,8 +66,17 @@ export const Quantity = styled.span`
   margin: 0 15px;
 `;
 export const Delete = styled.button`
-  width: 25px;
-  height: 25px;
+ 
+
+  position: absolute;
+  right: -48px;
+  height: 35px;
+  width: 35px;
+  background: #ff7f7f54;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const Button = styled.button`
   border: none;

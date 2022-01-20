@@ -12,7 +12,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   max-width: 100%;
-  @media only screen and (min-width: 56px) {
+  @media only screen and (min-width: 560px) {
     width: 500px;
   }
   @media only screen and (min-width: 768px) {

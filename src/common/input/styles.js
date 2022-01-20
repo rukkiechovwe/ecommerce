@@ -1,24 +1,32 @@
 import styled from "styled-components";
 export const Container = styled.div`
-	margin: 2rem 0;
-	width: 100%;
+  margin: 1rem 0;
+  width: 100%;
+  @media only screen and (min-width: 450px) {
+    width: ${(props) => props.width || "100%"};
+    margin: ${(props) => props.margin || "1rem 0"};
+  }
 `;
 export const Input = styled.input`
-	width: 100%;
-	background: #fff;
-	border-bottom: 1px solid hsl(0, 0%, 53.3%);
-	margin: 0.5rem 0;
-	color: #222;
-	:focus {
-		padding: 0.5rem;
-		border-bottom: 2px solid hsla(184, 50%, 45%, 1);
-	}
-	::placeholder {
-		color: #222;
-	}
+  width: 100%;
+  background: #fff;
+  border: 1px solid hsl(0, 0%, 78.4%);
+  margin: 0.5rem 0 0;
+  color: #222;
+  padding: 12px 15px;
+  border-radius: 5px;
+  :focus {
+    padding: 0.8rem;
+    border: 1px solid hsl(0, 0%, 90.2%);
+  }
+  ::placeholder {
+    color: #7b7b7b;
+    font-size: 14px;
+  }
 `;
 export const Label = styled.label`
-	padding: 0.5rem 0;
+  padding: 0.5rem 0;
+  font-size: 14px;
 `;
 export const ErrorText = styled.span`
   color: #ff2424;

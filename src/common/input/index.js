@@ -1,8 +1,17 @@
 import * as S from "./styles";
 
-const InputField = ({ onChange, placeholder, title, type, name, error }) => {
+const InputField = ({
+  margin,
+  width,
+  onChange,
+  placeholder,
+  title,
+  type,
+  name,
+  error,
+}) => {
   return (
-    <S.Container>
+    <S.Container width={width} margin={margin}>
       <S.Label>{title}</S.Label>
       <S.Input
         type={type}

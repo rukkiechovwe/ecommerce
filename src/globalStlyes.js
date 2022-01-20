@@ -55,7 +55,7 @@ const Styles = createGlobalStyle`
 
     h1, h2,h3,h4,h5,h6 {
         font-family: 'Rubik', sans-serif;
-        color: #222;
+        color: hsla(163,53%,46%,0.8);
         font-size: 2.575rem;
         line-height: 3.0625rem;
         font-weight: 600;
@@ -63,11 +63,6 @@ const Styles = createGlobalStyle`
         @media only screen and (max-width: 414px) {
           font-size: 1.625rem;
         }
-    }
-
-    h1 {
-        color: hsla(184, 50%, 45%, 1);
-        font-weight: 600;
     }
 
     h3 {

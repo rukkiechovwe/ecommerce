@@ -59,12 +59,14 @@ export const Category = styled.span`
 export const Name = styled.h3`
 	font-weight: 600;
 	padding: 1rem 0;
+   color:#222;
 `;
 export const Desc = styled.p`
 	font-weight: 500;
 	padding: 1rem 0;
 	width: 100%;
 	text-transform: capitalize;
+   color: #8a8a8a;
 `;
 export const Price = styled.span`
 	padding: 1rem 0;

@@ -15,9 +15,11 @@ const Signup = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [authErr, setAuthErr] = useState("");
   const history = useHistory();
 
   const signUpUser = async (n, e, p) => {
+    setAuthErr("");
     auth
       .createUserWithEmailAndPassword(e, p)
       .then(async (uc) => {
@@ -31,10 +33,13 @@ const Signup = () => {
       })
       .catch((error) => {
         console.log("sinup error:", error.message);
+        setAuthErr(error.message);
       });
   };
 
-  const signupWithGoogle = () => {
+  const signupWithGoogle = (e) => {
+    e.preventDefault();
+    setErrors({});
     auth
       .signInWithPopup(gProvider)
       .then(async (result) => {
@@ -50,6 +55,7 @@ const Signup = () => {
 
       .catch((error) => {
         console.log(error);
+        setAuthErr(error.message);
       });
   };
 
@@ -107,21 +113,23 @@ const Signup = () => {
                 setErrors(errors);
               }
             }}
+            textTransform="uppercase"
           >
-            Signup
+            Sign up
           </Button>
-          <S.Login>OR</S.Login>
+          <S.Login>OR SIGN UP WITH</S.Login>
           <Button
             onClick={(e) => {
-              e.preventDefault();
-              signupWithGoogle();
+              signupWithGoogle(e);
             }}
+            background="#d33d2b"
+            textTransform="uppercase"
           >
-            Sign Up with Google
+            Google
           </Button>
           <S.Login>
             Already have an account?
-            <S.NavLink to="/login"> Login here</S.NavLink>
+            <S.NavLink to="/sign-in"> Login here</S.NavLink>
           </S.Login>
         </S.AuthForm>
       </S.FormContainer>

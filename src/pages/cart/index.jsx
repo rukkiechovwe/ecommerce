@@ -25,7 +25,7 @@ function CartPage() {
               {cartItems.map((item) => (
                 <CartCard cartItem={item} key={item.id} />
               ))}
-              <Button>Checkout</Button>
+              <Button onClick={() => history.push("/checkout")}>Checkout</Button>
             </S.Container>
           </>
         ) : (

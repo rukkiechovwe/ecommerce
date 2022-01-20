@@ -1,8 +1,5 @@
 _____________TODO_____________
-- Cart Page
-   + Checkout Button
 - Checkout Page
-   + Login Before Payment
    + Payment with Paystack
    + Add Delivery Address
 - User Dashboard
@@ -19,6 +16,9 @@ _____________COMPLETED_____________
 - Cart Page
    + Delete Item
    + Subtotal
+   + Checkout Button
+- Checkout Page
+   + Login Before Payment
 - Sign In With Google
 - User Dashboard
    + Logout
