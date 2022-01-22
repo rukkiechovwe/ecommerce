@@ -68,15 +68,15 @@ export const Quantity = styled.span`
 export const Delete = styled.button`
  
 
-  position: absolute;
-  right: -48px;
-  height: 35px;
-  width: 35px;
-  background: #ff7f7f54;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+//   position: absolute;
+//   right: -48px;
+//   height: 35px;
+//   width: 35px;
+//   background: #ff7f7f54;
+//   border-radius: 50%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 `;
 export const Button = styled.button`
   border: none;

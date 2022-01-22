@@ -17,14 +17,13 @@ function UserContextProvider({ children }) {
         if (user_id === null) {
           localStorage.setItem("user_id", user.uid);
         }
-      //   console.log(user_id);
         firestore
           .collection("users")
           .doc(user_id)
           .get()
           .then((doc) => {
             if (doc.exists) {
-            //   console.log("Document data:", doc.data());
+               console.log(doc.data());
               setUserData(doc.data());
               setUserState(true);
             } else {

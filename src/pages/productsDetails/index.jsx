@@ -21,7 +21,7 @@ const ProductDetails = () => {
         <S.Details>
           <S.Category>{productData.category}</S.Category>
           <S.Name>{productData.title}</S.Name>
-          <S.Price>${productData.price}</S.Price>
+          <S.Price>NGN{productData.price}</S.Price>
           <S.Desc>{productData.description}</S.Desc>
           <S.QuantityContainer>
             <S.Button
@@ -74,10 +74,10 @@ const ProductDetails = () => {
           <Button
             onClick={() => {
               let isInCart = false;
-             
+
               for (let i = 0; i < cartItems.length; i++) {
                 const cart = cartItems[i];
-               //  console.log(cart);
+                //  console.log(cart);
 
                 if (product.title === cart.title) {
                   isInCart = true;
@@ -94,8 +94,8 @@ const ProductDetails = () => {
                 alert("Already in cart");
               }
 
-               // console.log(cartContext.cartItems);
-               // console.log(cartContext.cartItems.length);
+              // console.log(cartContext.cartItems);
+              // console.log(cartContext.cartItems.length);
             }}
           >
             ADD TO CART

@@ -15,7 +15,7 @@ const CartCard = ({ cartItem }) => {
         </S.ImageDiv>
         <S.Details>
           <S.Name>{item.title}</S.Name>
-          <S.Price>${item.price}</S.Price>
+          <S.Price>NGN{item.price}</S.Price>
         </S.Details>
       </S.Container>
       <S.OtherContainer>

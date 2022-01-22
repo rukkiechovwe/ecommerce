@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const Container = styled.div`
   margin: 1rem 0;
   width: 100%;
@@ -10,14 +11,14 @@ export const Container = styled.div`
 export const Input = styled.input`
   width: 100%;
   background: #fff;
-  border: 1px solid hsl(0, 0%, 78.4%);
+  border: 1px solid hsl(0, 0%, 90.2%);
   margin: 0.5rem 0 0;
   color: #222;
   padding: 12px 15px;
   border-radius: 5px;
   :focus {
     padding: 0.8rem;
-    border: 1px solid hsl(0, 0%, 90.2%);
+    border: 1px solid hsla(163, 53%, 46%, 0.8);
   }
   ::placeholder {
     color: #7b7b7b;

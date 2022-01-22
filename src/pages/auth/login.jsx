@@ -21,8 +21,9 @@ const Login = () => {
     setErrors({});
     auth
       .signInWithEmailAndPassword(e, p)
-      .then((userCredential) => {
-        console.log("you are signed in", userCredential.user.email);
+      .then((uc) => {
+        console.log("you are signed in", uc.user.email);
+        localStorage.setItem("user_id", uc.user.uid);
         history.push(`/account`);
       })
       .catch((error) => {
@@ -38,12 +39,13 @@ const Login = () => {
 
     auth
       .signInWithPopup(gProvider)
-      .then((result) => {
-        console.log(result);
+      .then((uc) => {
+        console.log(uc);
+        localStorage.setItem("user_id", uc.user.uid);
         history.push(`/account`);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Error message: ", error.message);
         setAuthErr(error.message);
       });
   };

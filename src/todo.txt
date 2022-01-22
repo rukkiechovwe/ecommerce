@@ -1,7 +1,4 @@
 _____________TODO_____________
-- Checkout Page
-   + Payment with Paystack
-   + Add Delivery Address
 - User Dashboard
    + View Orders
    + View Delivery Address
@@ -19,6 +16,8 @@ _____________COMPLETED_____________
    + Checkout Button
 - Checkout Page
    + Login Before Payment
+   + Payment with Paystack
+   + Add Delivery Address
 - Sign In With Google
 - User Dashboard
    + Logout

@@ -6,9 +6,10 @@ const InputField = ({
   onChange,
   placeholder,
   title,
-  type,
+  type, // is this the input there? yesss
   name,
   error,
+  ...props
 }) => {
   return (
     <S.Container width={width} margin={margin}>
@@ -17,6 +18,7 @@ const InputField = ({
         type={type}
         name={name}
         onChange={onChange}
+        {...props}
         placeholder={placeholder}
         autoComplete="new-password"
       />

@@ -70,6 +70,7 @@ const Signup = () => {
       </S.Onboarding>
       <S.FormContainer>
         <S.LoginText>Create an Account</S.LoginText>
+        <p>{authErr}</p>
         <S.AuthForm>
           <InputField
             title="Name"

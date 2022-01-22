@@ -49,7 +49,7 @@ const Styles = createGlobalStyle`
         transition: color 0.2s ease-in;
 
         :hover {
-            color: hsla(184,50%,45%,1);
+            color: hsla(163,53%,46%,0.8);
         }
     }
 
