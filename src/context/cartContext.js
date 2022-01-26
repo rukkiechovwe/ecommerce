@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { firestore } from "../firebase";
 
 export const CartContext = React.createContext();
 
@@ -12,15 +13,26 @@ const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case "add":
       let addItems = state.items.concat(action.item);
+      updateFirestoreCart(
+        addItems,
+        calculateTotalCount(addItems),
+        calculateTotal(addItems)
+      );
       return {
         ...state,
         items: addItems,
         total: calculateTotalCount(addItems),
         price: calculateTotal(addItems),
       };
+
     case "remove":
       let removeItems = state.items.filter(
-        (item, id) => item.id !== action.item.id
+        (item) => item.id !== action.item.id
+      );
+      updateFirestoreCart(
+        removeItems,
+        calculateTotalCount(removeItems),
+        calculateTotal(removeItems)
       );
       return {
         ...state,
@@ -31,11 +43,25 @@ const cartReducer = (state = initialState, action) => {
 
     case "update_quantity":
       const updateItems = updateQuantity(state.items, action.item);
+      updateFirestoreCart(
+        updateItems,
+        calculateTotalCount(updateItems),
+        calculateTotal(updateItems)
+      );
       return {
         ...state,
         items: updateItems,
         price: calculateTotal(updateItems),
         total: calculateTotalCount(updateItems),
+      };
+
+    case "clear":
+      updateFirestoreCart([], 0, 0);
+      return {
+        ...state,
+        total: 0,
+        items: [],
+        price: 0,
       };
 
     default:
@@ -62,6 +88,31 @@ const updateQuantity = (items, item) => {
     return e;
   });
 };
+
+const updateFirestoreCart = (items, total, price) => {
+  const user_id = localStorage.getItem("user_id");
+
+  return firestore
+    .collection("users")
+    .doc(user_id)
+    .update({
+      cartItems: {
+        items: items,
+        total: total,
+        price: price,
+      },
+    })
+    .then(() => {
+      console.log("Document successfully updated!");
+    })
+    .catch((error) => {
+      console.error("Error updating document: ", error);
+    });
+};
+
+const getFireStoreCart = ()=>{
+
+}
 
 const CartContextProvider = ({ children }) => {
   const [cart, cartDispatch] = useReducer(cartReducer, initialState);

@@ -16,3 +16,4 @@ export const gProvider = new firebase.auth.GoogleAuthProvider();
 export const Ifirebase = fb;
 export const auth = fb.auth();
 export const firestore = fb.firestore();
+export const fieldValue = firebase.firestore.FieldValue

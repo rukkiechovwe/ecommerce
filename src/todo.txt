@@ -1,4 +1,5 @@
 _____________TODO_____________
+- Sore cart items in firestore
 - User Dashboard
    + View Orders
    + View Delivery Address
@@ -19,5 +20,6 @@ _____________COMPLETED_____________
    + Payment with Paystack
    + Add Delivery Address
 - Sign In With Google
+- Successful Payment/ Thank you page
 - User Dashboard
    + Logout

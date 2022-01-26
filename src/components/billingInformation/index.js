@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import * as S from "./styles";
 import PaymentModal from "../../components/paymentModal";
 
-import { firestore } from "../../firebase";
 import { BillingDetailsValidation } from "./validate";
 
 import Button from "../../common/button";
@@ -29,37 +28,16 @@ function BillingInformation() {
       country,
       method
     );
-     setPaymentModal(true);
-   //  if (Object.keys(err).length === 0) {
-   //    updateBillingInfo();
-   //  } else {
-   //    setErrors(err);
-   //  }
+    //   setPaymentModal(true);
+    if (Object.keys(err).length === 0) {
+      // updateBillingInfo();
+      setPaymentModal(true);
+    } else {
+      setErrors(err);
+    }
   };
 
-  const updateBillingInfo = () => {
-    const user_id = localStorage.getItem("user_id");
-
-    return firestore
-      .collection("users")
-      .doc(user_id)
-      .update({
-        billingDetails: {
-          firstName: firstName,
-          lastName: lastName,
-          address: address,
-          state: state,
-          country: country,
-        },
-      })
-      .then(() => {
-        console.log("Document successfully updated!");
-        setPaymentModal(true);
-      })
-      .catch((error) => {
-        console.error("Error updating document: ", error);
-      });
-  };
+ 
 
   return (
     <S.InfoContainer>
@@ -152,9 +130,18 @@ function BillingInformation() {
         </Button>
       </S.ButtonWrapper>
 
-      {paymentModal && <PaymentModal method={method} />}
+      {paymentModal && (
+        <PaymentModal
+          method={method}
+          firstName={firstName}
+          lastName={lastName}
+          address={address}
+          state={state}
+          country={country}
+        />
+      )}
     </S.InfoContainer>
-  )
+  );
 }
 
 export default BillingInformation;
