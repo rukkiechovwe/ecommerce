@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import * as S from "./styles";
 import PaymentModal from "../../components/paymentModal";
 
@@ -10,7 +10,7 @@ import InputField from "../../common/input";
 function BillingInformation() {
   const [paymentModal, setPaymentModal] = useState(false);
   const [errors, setErrors] = useState({});
-  const [authErr, setAuthErr] = useState("");
+  //   const [authErr, setAuthErr] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
@@ -36,8 +36,6 @@ function BillingInformation() {
       setErrors(err);
     }
   };
-
- 
 
   return (
     <S.InfoContainer>

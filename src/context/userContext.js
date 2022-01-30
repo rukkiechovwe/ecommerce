@@ -7,7 +7,6 @@ export const UserContext = React.createContext();
 function UserContextProvider({ children }) {
   const [userData, setUserData] = useState({});
   const history = useHistory();
-  const [userState, setUserState] = useState(false);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -23,9 +22,8 @@ function UserContextProvider({ children }) {
           .get()
           .then((doc) => {
             if (doc.exists) {
-               console.log(doc.data());
+              console.log(doc.data());
               setUserData(doc.data());
-              setUserState(true);
             } else {
               console.log("No such document!");
             }
@@ -36,16 +34,6 @@ function UserContextProvider({ children }) {
       }
     });
   }, []);
-
-  useEffect(() => {
-    const user_id = localStorage.getItem("user_id");
-    if (user_id) {
-      setUserState(true);
-    } else {
-      setUserState(false);
-    }
-   //  console.log(userState);
-  }, [setUserState, userState]);
 
   const signOut = () => {
     auth
@@ -60,9 +48,7 @@ function UserContextProvider({ children }) {
       });
   };
   return (
-    <UserContext.Provider
-      value={{ userData, signOut, userState, setUserState }}
-    >
+    <UserContext.Provider value={{ userData, signOut }}>
       {children}
     </UserContext.Provider>
   );

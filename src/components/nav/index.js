@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/cartContext";
-import { UserContext } from "../../context/userContext";
 import * as S from "./styles";
 
 const Nav = () => {
-  const { userState } = useContext(UserContext);
+  const user_id = localStorage.getItem("user_id");
   const { cartTotal } = useContext(CartContext);
 
   return (
@@ -13,7 +12,7 @@ const Nav = () => {
         <S.Ul>
           <S.Logo to="/">Logo</S.Logo>
           <S.NavContainer>
-            {userState ? (
+            {user_id ? (
               <S.NavLink to="/account">PROFILE</S.NavLink>
             ) : (
               <>

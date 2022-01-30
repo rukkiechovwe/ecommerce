@@ -3,7 +3,8 @@ import Button from "../../common/button";
 import { UserContext } from "../../context/userContext";
 
 const UserProfile = () => {
-  const { userData, signOut, setUserState } = useContext(UserContext);
+
+  const { userData, signOut } = useContext(UserContext);
 
   return (
     <div>
@@ -16,7 +17,6 @@ const UserProfile = () => {
           width="300px"
             onClick={() => {
               signOut();
-              setUserState(false);
             }}
           >
             Signout

@@ -1,8 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import * as S from "./styles";
 import { useHistory } from "react-router";
-
-import { UserContext } from "../../context/userContext";
 
 import Nav from "../../components/nav";
 import SummaryDetails from "../../components/summaryDetails";
@@ -10,13 +8,13 @@ import BillingInformation from "../../components/billingInformation";
 
 function Checkout() {
   const history = useHistory();
-  const { userState } = useContext(UserContext);
+  const user_id = localStorage.getItem("user_id");
 
   useEffect(() => {
-    if (!userState) {
+    if (!user_id) {
       history.push("/sign-in");
     }
-  }, [userState]);
+  }, [user_id]);
 
   return (
     <>

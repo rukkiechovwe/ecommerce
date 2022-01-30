@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import ProductImage from "../appImages";
 import * as S from "./styles";
 
 const CartCard = ({ cartItem }) => {
-  //   const [item, setItem] = useState(cartItem);
-
   return (
     <S.CartCard>
       <S.Container>

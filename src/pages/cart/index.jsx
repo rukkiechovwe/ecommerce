@@ -10,7 +10,7 @@ import Button from "../../common/button";
 function CartPage() {
   const history = useHistory();
   const { cartItems, cartTotal, SubTotal } = useContext(CartContext);
- 
+
   return (
     <>
       <Nav />
@@ -25,7 +25,9 @@ function CartPage() {
               {cartItems.map((item) => (
                 <CartCard cartItem={item} key={item.id} />
               ))}
-              <Button onClick={() => history.push("/checkout")}>Checkout</Button>
+              <Button onClick={() => history.push("/checkout")}>
+                Checkout
+              </Button>
             </S.Container>
           </>
         ) : (

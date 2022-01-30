@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { CartContext } from "../../context/cartContext";
+// import { UserContext } from "../../context/userContext";
 import ProductImage from "../appImages";
 import * as S from "./styles";
 

@@ -1,5 +1,6 @@
-import React, { useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 import { firestore } from "../firebase";
+import { UserContext } from "./userContext";
 
 export const CartContext = React.createContext();
 
@@ -11,6 +12,8 @@ const initialState = {
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "get":
+      return action.payload;
     case "add":
       let addItems = state.items.concat(action.item);
       updateFirestoreCart(
@@ -110,13 +113,14 @@ const updateFirestoreCart = (items, total, price) => {
     });
 };
 
-const getFireStoreCart = ()=>{
-
-}
-
 const CartContextProvider = ({ children }) => {
   const [cart, cartDispatch] = useReducer(cartReducer, initialState);
-
+  const { userData } = useContext(UserContext);
+  useEffect(() => {
+    if (userData && userData.cartItems) {
+      cartDispatch({ type: "get", payload: userData.cartItems });
+    }
+  }, [userData]);
   return (
     <CartContext.Provider
       value={{

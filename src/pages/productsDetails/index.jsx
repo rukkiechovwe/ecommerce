@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 import * as S from "./styles";
 import Button from "../../common/button";
@@ -10,6 +10,7 @@ import { CartContext } from "../../context/cartContext";
 const ProductDetails = () => {
   const productData = useLocation().state.item;
   const { cartItems, cartDispatch } = useContext(CartContext);
+  const history = useHistory();
   const [product, setProduct] = useState(productData);
   return (
     <>
@@ -73,29 +74,29 @@ const ProductDetails = () => {
           </S.QuantityContainer>
           <Button
             onClick={() => {
-              let isInCart = false;
+              const user_id = localStorage.getItem("user_id");
+              if (user_id) {
+                let isInCart = false;
 
-              for (let i = 0; i < cartItems.length; i++) {
-                const cart = cartItems[i];
-                //  console.log(cart);
-
-                if (product.title === cart.title) {
-                  isInCart = true;
-                  break;
+                for (let i = 0; i < cartItems.length; i++) {
+                  const cart = cartItems[i];
+                  if (product.title === cart.title) {
+                    isInCart = true;
+                    break;
+                  }
                 }
-              }
-              if (!isInCart) {
-                cartDispatch({
-                  type: "add",
-                  item: product,
-                });
-                alert("Added to cart");
+                if (!isInCart) {
+                  cartDispatch({
+                    type: "add",
+                    item: product,
+                  });
+                  alert("Added to cart");
+                } else {
+                  alert("Already in cart");
+                }
               } else {
-                alert("Already in cart");
+                history.push("/sign-in");
               }
-
-              // console.log(cartContext.cartItems);
-              // console.log(cartContext.cartItems.length);
             }}
           >
             ADD TO CART

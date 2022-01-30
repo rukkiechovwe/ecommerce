@@ -1,10 +1,9 @@
 _____________TODO_____________
-- Sore cart items in firestore
+- Loader
 - User Dashboard
    + View Orders
    + View Delivery Address
    + Transaction History
-   + Edit Profile
 
 
 _____________COMPLETED_____________
@@ -20,6 +19,7 @@ _____________COMPLETED_____________
    + Payment with Paystack
    + Add Delivery Address
 - Sign In With Google
+- Store cart items in firestore
 - Successful Payment/ Thank you page
 - User Dashboard
    + Logout
