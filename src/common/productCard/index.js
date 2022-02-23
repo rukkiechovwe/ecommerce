@@ -7,7 +7,7 @@ const ProductCard = ({ onClick, title, price, image }) => (
       <ProductImage src={image} />
     </S.ImageDiv>
     <S.Name>{title}Solar Panels</S.Name>
-    <S.Price>NGN{price}</S.Price>
+    <S.Price>NGN{parseInt(price)}</S.Price>
   </S.ProductCard>
 );
 

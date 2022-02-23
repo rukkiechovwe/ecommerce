@@ -11,7 +11,6 @@ function UserContextProvider({ children }) {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user.uid);
         const user_id = localStorage.getItem("user_id");
         if (user_id === null) {
           localStorage.setItem("user_id", user.uid);
@@ -22,7 +21,6 @@ function UserContextProvider({ children }) {
           .get()
           .then((doc) => {
             if (doc.exists) {
-              console.log(doc.data());
               setUserData(doc.data());
             } else {
               console.log("No such document!");

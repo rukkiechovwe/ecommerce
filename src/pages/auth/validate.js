@@ -7,7 +7,6 @@ export const LoginValidation = (email, password) => {
   if (password.length < 8)
     errors.password = "Password must be 8 characters long!";
 
-  console.log(errors);
   return errors;
 };
 
@@ -21,6 +20,5 @@ export const SignupValidation = (name, email, password) => {
   if (password.length < 8)
     errors.password = "Password must be 8 characters long!";
 
-  console.log(errors);
   return errors;
 };

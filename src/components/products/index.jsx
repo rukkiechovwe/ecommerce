@@ -5,6 +5,10 @@ import ProductCard from "../../common/productCard";
 import { ProductContext } from "../../context/productContext";
 
 const Products = () => {
+  const create_slug = (slug) => {
+    slug = slug.split(" ").join("_");
+    return slug;
+  };
   const { item } = useContext(ProductContext);
   const history = useHistory();
   return item.products.length === 0 ? (
@@ -23,8 +27,7 @@ const Products = () => {
         image={item.image}
         key={item.id}
         onClick={() => {
-          // console.log(item);
-          history.push(`/${item.title}`, { item: item });
+          history.push(`/${create_slug(item.title)}`, { item: item });
         }}
       />
     ))

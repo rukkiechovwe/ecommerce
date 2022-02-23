@@ -106,7 +106,7 @@ const updateFirestoreCart = (items, total, price) => {
       },
     })
     .then(() => {
-      console.log("Document successfully updated!");
+      console.log("Item successfully updated!");
     })
     .catch((error) => {
       console.error("Error updating document: ", error);
@@ -127,7 +127,7 @@ const CartContextProvider = ({ children }) => {
         cartDispatch: cartDispatch,
         cartTotal: cart.total,
         cartItems: cart.items,
-        SubTotal: cart.price,
+        SubTotal: parseInt(cart.price),
       }}
     >
       {children}

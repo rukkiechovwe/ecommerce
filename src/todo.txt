@@ -1,29 +1,6 @@
 _____________TODO_____________
-- Slug
-- Trim input before validation
-- Loading indicator
 - Error Handling
 - User Dashboard
    + View Orders
    + Transaction History
 
-
-_____________COMPLETED_____________
-- Auth
-   + Manage auth state(store user data)
-   + Show user icon on nav bar when user is logged in
-- Cart Page
-   + Delete Item
-   + Subtotal
-   + Checkout Button
-- Checkout Page
-   + Login Before Payment
-   + Payment with Paystack
-   + Add Delivery Address
-- Hero Banner
-- Sign In With Google
-- Store cart items in firestore
-- Successful Payment/ Thank you page
-- User Dashboard
-   + Logout
-- Loader

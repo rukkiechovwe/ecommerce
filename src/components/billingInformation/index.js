@@ -10,7 +10,6 @@ import InputField from "../../common/input";
 function BillingInformation() {
   const [paymentModal, setPaymentModal] = useState(false);
   const [errors, setErrors] = useState({});
-  //   const [authErr, setAuthErr] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
@@ -20,6 +19,7 @@ function BillingInformation() {
 
   const submit = (e) => {
     e.preventDefault();
+    setErrors({});
     let err = BillingDetailsValidation(
       firstName,
       lastName,
@@ -28,9 +28,7 @@ function BillingInformation() {
       country,
       method
     );
-    //   setPaymentModal(true);
     if (Object.keys(err).length === 0) {
-      // updateBillingInfo();
       setPaymentModal(true);
     } else {
       setErrors(err);

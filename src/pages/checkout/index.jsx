@@ -14,7 +14,7 @@ function Checkout() {
     if (!user_id) {
       history.push("/sign-in");
     }
-  }, [user_id]);
+  }, [user_id, history]);
 
   return (
     <>

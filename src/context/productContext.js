@@ -31,7 +31,7 @@ function ProductContextProvider({ children }) {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+      //   console.log(data);
         dispatch({ type: "transformProduct", payload: data });
       })
       .catch((error) => console.log(error));

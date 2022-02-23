@@ -22,7 +22,7 @@ const ProductDetails = () => {
         <S.Details>
           <S.Category>{productData.category}</S.Category>
           <S.Name>{productData.title}</S.Name>
-          <S.Price>NGN{productData.price}</S.Price>
+          <S.Price>NGN{parseInt(productData.price)}</S.Price>
           <S.Desc>{productData.description}</S.Desc>
           <S.QuantityContainer>
             <S.Button

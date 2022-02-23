@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router";
 import { XCircle } from "phosphor-react";
 
@@ -23,12 +23,12 @@ const PaymentModal = ({
   const history = useHistory();
   const { SubTotal, cartItems, cartDispatch } = useContext(CartContext);
   const { userData } = useContext(UserContext);
-  console.log(
-    process.env.REACT_APP_FIREBASE_APP_ID,
-    process.env.REACT_APP_PAYSTACK_KEY
-  );
+  const [authErr, setAuthErr] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  //   paystack details
   const publicKey = process.env.REACT_APP_PAYSTACK_KEY;
-  const amount = 100 * (parseInt(SubTotal) + 100);
+  const amount = 100 * (SubTotal + 100);
   const name = userData.name;
   const email = userData.email;
   const componentProps = {
@@ -47,6 +47,8 @@ const PaymentModal = ({
     onClose: () => alert("Wait! You need this item, don't go!!!!"),
   };
   const updateOrders = () => {
+    setAuthErr("");
+    setLoading(true);
     const user_id = localStorage.getItem("user_id");
 
     return firestore
@@ -66,14 +68,16 @@ const PaymentModal = ({
         }),
       })
       .then(() => {
-        console.log("Orders successfully updated!");
+        setLoading(false);
         cartDispatch({
           type: "clear",
         });
         history.push("/thank-you");
       })
       .catch((error) => {
+        setLoading(false);
         console.error("Error updating orders: ", error);
+        setAuthErr(error.message);
       });
   };
   return (
@@ -90,6 +94,7 @@ const PaymentModal = ({
         >
           <XCircle size={32} />
         </Button>
+        <p className="err">{authErr}</p>
         <div>
           {cartItems.map((item) => (
             <SummaryCard cartItem={item} key={item.id} />
@@ -112,12 +117,13 @@ const PaymentModal = ({
         ) : (
           <div>
             <Button
+              disabled={loading}
               onClick={(e) => {
                 e.preventDefault();
                 updateOrders();
               }}
             >
-              Place Order
+              {loading ? "please wait..." : " place order"}
             </Button>
           </div>
         )}

@@ -6,8 +6,8 @@ import { SignupValidation } from "./validate";
 import Button from "../../common/button";
 import ProductImage from "../../common/appImages";
 import Onboarding1 from "../../assets/images/happy-shopping.svg";
-
 import InputField from "../../common/input";
+
 import * as S from "./styles";
 
 const Signup = () => {
@@ -16,13 +16,18 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [authErr, setAuthErr] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const history = useHistory();
 
   const signUpUser = async (n, e, p) => {
     setAuthErr("");
+    setLoading(true);
+    setErrors({});
     auth
       .createUserWithEmailAndPassword(e, p)
       .then(async (uc) => {
+        setLoading(false);
         await firestore.collection("users").doc(uc.user.uid).set({
           name: n,
           email: e,
@@ -32,7 +37,8 @@ const Signup = () => {
         history.push(`/account`);
       })
       .catch((error) => {
-        console.log("sinup error:", error.message);
+        setLoading(false);
+        console.log("singup error:", error.message);
         setAuthErr(error.message);
       });
   };
@@ -70,7 +76,7 @@ const Signup = () => {
       </S.Onboarding>
       <S.FormContainer>
         <S.LoginText>Create An Account</S.LoginText>
-        <p>{authErr}</p>
+        <p className="err">{authErr}</p>
         <S.AuthForm>
           <InputField
             title="Name"
@@ -105,18 +111,19 @@ const Signup = () => {
           />
 
           <Button
+            disabled={loading}
             onClick={(e) => {
               e.preventDefault();
-              let errors = SignupValidation(userName, email, password);
+              let errors = SignupValidation(userName, email.trim(), password);
               if (Object.keys(errors).length === 0) {
-                signUpUser(userName, email, password);
+                signUpUser(userName, email.trim(), password);
               } else {
                 setErrors(errors);
               }
             }}
             textTransform="uppercase"
           >
-            Sign up
+            {loading ? "please wait..." : " create an account"}
           </Button>
           <S.Login>OR SIGN UP WITH</S.Login>
           <Button

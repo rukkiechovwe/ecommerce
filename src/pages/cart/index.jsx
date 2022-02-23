@@ -20,7 +20,7 @@ function CartPage() {
             <S.Container>
               <S.TotalText>
                 <p>{cartTotal} Items</p>
-                <p>Total: {SubTotal}</p>
+                <p>Total: NGN{SubTotal}</p>
               </S.TotalText>
               {cartItems.map((item) => (
                 <CartCard cartItem={item} key={item.id} />

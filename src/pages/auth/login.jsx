@@ -14,19 +14,23 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [authErr, setAuthErr] = useState("");
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const signInUser = (e, p) => {
     setAuthErr("");
+    setLoading(true);
     setErrors({});
     auth
       .signInWithEmailAndPassword(e, p)
       .then((uc) => {
-        console.log("you are signed in", uc.user.email);
+        setLoading(false);
+        console.log("you are signed in as", uc.user.email);
         localStorage.setItem("user_id", uc.user.uid);
         history.push(`/account`);
       })
       .catch((error) => {
+        setLoading(false);
         console.log("Error message: ", error.message);
         setAuthErr(error.message);
       });
@@ -61,14 +65,14 @@ const Login = () => {
       </S.Onboarding>
       <S.FormContainer>
         <S.LoginText>Sign In</S.LoginText>
-        <p>{authErr}</p>
+        <p className="err">{authErr}</p>
         <S.AuthForm>
           <InputField
             title="Email"
             type="email"
             placeholder="hello@gmail.com"
             onChange={(e) => {
-              setEmail(e.target.value);
+              setEmail(e.target.value.trim());
             }}
             error={errors.email}
           />
@@ -82,19 +86,19 @@ const Login = () => {
             error={errors.password}
           />
           <Button
+            disabled={loading}
             onClick={(e) => {
               e.preventDefault();
-              let errors = LoginValidation(email, password);
+              let errors = LoginValidation(email.trim(), password);
               if (Object.keys(errors).length === 0) {
-                signInUser(email, password);
+                signInUser(email.trim(), password);
               } else {
                 setErrors(errors);
               }
             }}
-            // color="black"
             textTransform="uppercase"
           >
-            sign in
+            {loading ? "please wait..." : " sign in"}
           </Button>
           <S.Login>OR SIGN IN WITH</S.Login>
           <Button
