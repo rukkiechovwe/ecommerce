@@ -51,8 +51,8 @@ export const Heading = styled.h1`
   color: #222;
   width: 90%;
   @media only screen and (min-width: 600px) {
-    font-size: 3.575rem;
-    line-height: 3.1625rem;
+    font-size: 4.075rem;
+    line-height: 3.5625rem;
   }
 `;
 export const Para = styled.p`

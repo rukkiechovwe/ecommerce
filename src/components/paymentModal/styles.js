@@ -14,13 +14,15 @@ export const Wrapper = styled.div`
   align-items: center;
   padding: 20px;
 `;
-export const Container = styled.nav`
+export const Container = styled.div`
   background: white;
   max-height: 500px;
   width: 500px;
-  padding: 30px 20px;
+  padding: 10px 20px;
   border-radius: 5px;
   overflow: auto;
+  position: relative;
+  padding-top: 4rem;
 `;
 
 export const Payment = styled.div`
@@ -29,12 +31,31 @@ export const Payment = styled.div`
 `;
 
 export const Button = styled(PaystackButton)`
-  font-weight: 400;
+  font-weight: 500;
   margin: 1rem 0;
   padding: 10px;
   width: 100%;
   border: none;
   background: hsla(163, 53%, 46%, 0.8);
+  hsla(163,53%,46%,0.8);
+	background: linear-gradient(
+		225deg,
+		hsla(184, 50%, 45%, 1) 0%,
+		hsla(170, 51%, 46%, 1) 41%,
+		hsla(163, 53%, 46%, 0.8) 100%
+	);
+	background: -moz-linear-gradient(
+		225deg,
+		hsla(184, 50%, 45%, 1) 0%,
+		hsla(170, 51%, 46%, 1) 41%,
+		hsla(163, 53%, 46%, 0.8) 100%
+	);
+	background: -webkit-linear-gradient(
+		225deg,
+		hsla(184, 50%, 45%, 1) 0%,
+		hsla(170, 51%, 46%, 1) 41%,
+		hsla(163, 53%, 46%, 0.8) 100%
+	);
   border-radius: 5px;
   color: #fff;
   text-transform: capitalize;

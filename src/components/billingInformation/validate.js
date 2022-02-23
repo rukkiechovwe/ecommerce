@@ -4,7 +4,7 @@ export const BillingDetailsValidation = (
   address,
   state,
   country,
-  payCash
+  
 ) => {
   const errors = {};
 
@@ -13,7 +13,6 @@ export const BillingDetailsValidation = (
   if (!address) errors.address = "Address is required";
   if (!state) errors.state = "State is required";
   if (!country) errors.country = "Country is required";
-console.log(payCash);
   console.log(errors);
   return errors;
 };

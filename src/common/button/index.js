@@ -7,6 +7,7 @@ const Button = ({
   onClick,
   children,
   textTransform,
+  position,
   disabled,
 }) => {
   return (
@@ -16,6 +17,7 @@ const Button = ({
       textTransform={textTransform}
       onClick={onClick}
       background={background}
+      position={position}
       disabled={disabled}
     >
       {children}

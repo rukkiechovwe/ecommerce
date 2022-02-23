@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { useHistory } from "react-router";
+import { XCircle } from "phosphor-react";
 
 import { fieldValue, firestore } from "../../firebase";
 import { CartContext } from "../../context/cartContext";
 import { UserContext } from "../../context/userContext";
 
-import * as S from "./styles";
-
 import SummaryCard from "../../common/summaryCard";
 import Button from "../../common/button";
+
+import * as S from "./styles";
 
 const PaymentModal = ({
   method,
@@ -17,13 +18,17 @@ const PaymentModal = ({
   address,
   state,
   country,
+  setPaymentModal,
 }) => {
   const history = useHistory();
   const { SubTotal, cartItems, cartDispatch } = useContext(CartContext);
   const { userData } = useContext(UserContext);
-
-  const publicKey = "pk_test_6c4989c4eefebff720660dd216bba1b061eabd38";
-  const amount = 100 * (SubTotal + 100);
+  console.log(
+    process.env.REACT_APP_FIREBASE_APP_ID,
+    process.env.REACT_APP_PAYSTACK_KEY
+  );
+  const publicKey = process.env.REACT_APP_PAYSTACK_KEY;
+  const amount = 100 * (parseInt(SubTotal) + 100);
   const name = userData.name;
   const email = userData.email;
   const componentProps = {
@@ -66,7 +71,6 @@ const PaymentModal = ({
           type: "clear",
         });
         history.push("/thank-you");
-        
       })
       .catch((error) => {
         console.error("Error updating orders: ", error);
@@ -75,6 +79,17 @@ const PaymentModal = ({
   return (
     <S.Wrapper>
       <S.Container>
+        <Button
+          background="transparent"
+          color="#222"
+          width="auto"
+          position={true}
+          onClick={() => {
+            setPaymentModal(false);
+          }}
+        >
+          <XCircle size={32} />
+        </Button>
         <div>
           {cartItems.map((item) => (
             <SummaryCard cartItem={item} key={item.id} />

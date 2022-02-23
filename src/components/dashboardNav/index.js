@@ -1,7 +1,11 @@
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 import Button from "../../common/button";
-import { HouseSimple, Ticket, Handbag, Power } from "phosphor-react";
+import {
+  HouseSimple,
+  // Ticket, Handbag,
+  Power,
+} from "phosphor-react";
 
 import * as S from "./styles";
 

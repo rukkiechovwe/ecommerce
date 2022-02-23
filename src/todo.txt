@@ -1,6 +1,7 @@
 _____________TODO_____________
 - Slug
-- Hero Banner
+- Trim input before validation
+- Loading indicator
 - Error Handling
 - User Dashboard
    + View Orders
@@ -19,6 +20,7 @@ _____________COMPLETED_____________
    + Login Before Payment
    + Payment with Paystack
    + Add Delivery Address
+- Hero Banner
 - Sign In With Google
 - Store cart items in firestore
 - Successful Payment/ Thank you page

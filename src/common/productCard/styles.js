@@ -9,7 +9,7 @@ export const ProductCard = styled.div`
   background: #fff;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0px 2px 10px #5e5d5d2b;
+  box-shadow: rgba(94, 93, 93, 0.08) 0px 2px 10px;
   position: relative;
 
   ::after {
@@ -19,14 +19,14 @@ export const ProductCard = styled.div`
   }
   :hover::after {
     background: #a870253d;
-   //  background: hsla(163.1, 53%, 45.9%, 0.17);
+    //  background: hsla(163.1, 53%, 45.9%, 0.17);
     width: 100%;
     height: 100%;
     position: absolute;
     right: 0;
     top: 0;
     border-radius: 7px;
-    transition: all .3s linear 0s;
+    transition: all 0.3s linear 0s;
   }
 
   @media (min-width: 400px) {

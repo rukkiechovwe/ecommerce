@@ -7,7 +7,7 @@ An elegant ecommerce application
 
 ## Getting Started
 - clone this repository
-- create a `.env` file from `.env.example` with firebase web credentials
+- create a `.env` file from `.env.example` with firebase web credentials and paystack publick key
 - run: `npm install` to install dependencies
 - run: `npm start`
 

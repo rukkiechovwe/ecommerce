@@ -136,6 +136,7 @@ function BillingInformation() {
           address={address}
           state={state}
           country={country}
+          setPaymentModal={setPaymentModal}
         />
       )}
     </S.InfoContainer>
