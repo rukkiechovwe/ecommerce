@@ -8,6 +8,8 @@ import Signup from "../pages/auth/signup";
 import ResetPassword from "../pages/auth/reset-password";
 import UserProfile from "../pages/profile";
 import ThankYou from "../pages/thankYou";
+import Orders from "../pages/orders";
+import Transactions from "../pages/transactions";
 
 function AppRouter() {
   return (
@@ -20,6 +22,8 @@ function AppRouter() {
       <Route path="/sign-up" component={Signup} />
       <Route path="/reset_password" component={ResetPassword} />
       <Route path="/account" component={UserProfile} />
+      <Route path="/orders" component={Orders} />
+      <Route path="/transactions" component={Transactions} />
       <Route path="/:title" component={ProductDetails} />
     </Switch>
   );

@@ -8,7 +8,13 @@ const Products = () => {
   const { item } = useContext(ProductContext);
   const history = useHistory();
   return item.products.length === 0 ? (
-    <center>loading...</center>
+    <div className="loader-wrapper">
+      <div className="loader">
+        <span className="spin spin-1"></span>
+        <span className="spin spin-2"></span>
+      </div>
+      <p className="text text-6">text</p>
+    </div>
   ) : (
     item.products.map((item) => (
       <ProductCard

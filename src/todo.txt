@@ -1,8 +1,9 @@
 _____________TODO_____________
-- Loader
+- Slug
+- Hero Banner
+- Error Handling
 - User Dashboard
    + View Orders
-   + View Delivery Address
    + Transaction History
 
 
@@ -23,3 +24,4 @@ _____________COMPLETED_____________
 - Successful Payment/ Thank you page
 - User Dashboard
    + Logout
+- Loader
